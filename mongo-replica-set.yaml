@@ -3,10 +3,10 @@ version: '3.8'
 services:
   mongoreplica01:
     image: mongo:latest
-    container_name: mongoreplica01
+    container_name: mongo-replica-01
     ports:
       - "27017:27017"
-    command: ["mongod", "--replSet", "rs0", "--bind_ip_all"]
+    command: ["mongod", "--replSet", "mongoReplicaSet","--wiredTigerCacheSizeGB","2", "--bind_ip", "localhost,mongo-replica-01"]
     networks:
       - mongo-replica-cluster
     volumes:
@@ -14,10 +14,10 @@ services:
 
   mongoreplica02:
     image: mongo:latest
-    container_name: mongoreplica02
+    container_name: mongo-replica-02
     ports:
       - "27018:27017"
-    command: ["mongod", "--replSet", "rs0", "--bind_ip_all"]
+    command: ["mongod", "--replSet", "mongoReplicaSet", "--wiredTigerCacheSizeGB", "2", "--bind_ip","localhost,mongo-replica-02"]
     networks:
       - mongo-replica-cluster
     volumes:
@@ -25,10 +25,10 @@ services:
 
   mongoreplica03:
     image: mongo:latest
-    container_name: mongoreplica03
+    container_name: mongo-replica-03
     ports:
       - "27019:27017"
-    command: ["mongod", "--replSet", "rs0", "--bind_ip_all"]
+    command: ["mongod", "--replSet", "mongoReplicaSet","--wiredTigerCacheSizeGB","2", "--bind_ip","localhost,mongo-replica-03"]
     networks:
       - mongo-replica-cluster
     volumes:
