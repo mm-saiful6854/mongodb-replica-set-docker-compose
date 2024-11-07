@@ -183,3 +183,9 @@ Now checking the status of cluster, you will get proper output:
 
 
 ## Mongo-express for Mongodb UI
+We sometimes feel comfortable with UI where we will get database information in interactive mode. Mongo express helps us to connect with mongodb. Let's setup mongo-express container.
+```
+docker run -d --network mongodb-replica-set-docker-compose_mongo-replica-cluster -e ME_CONFIG_MONGODB_SERVER=mongoreplica01,mongoreplica02,mongoreplica03 --name mongo-express-replica-set -p 8081:8081 mongo-express
+```
+Now you might access 'http://localhost:8081/' to visualize the mongo express UI.
+
